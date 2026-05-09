@@ -1,0 +1,128 @@
+<section class="page-container booking-layout">
+  <div class="booking-main">
+    <span class="eyebrow">Agendamento</span>
+    <h1 class="page-title">Monte seu atendimento</h1>
+    <p class="page-lead">
+      Selecione serviços, data e horário.
+    </p>
+
+    <mat-card class="booking-card">
+      <h2>1. Seu nome</h2>
+      <div class="customer-grid single-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Nome do cliente</mat-label>
+          <input
+            matInput
+            autocomplete="name"
+            required
+            [ngModel]="bookingService.draft().customerName"
+            (ngModelChange)="bookingService.patchDraft({ customerName: $event })"
+          />
+        </mat-form-field>
+      </div>
+    </mat-card>
+
+    <mat-card class="booking-card">
+      <h2>2. Serviços</h2>
+      <div class="service-options">
+        @for (service of bookingService.services; track service.id) {
+          <button
+            class="service-option"
+            type="button"
+            [class.selected]="bookingService.isSelected(service.id)"
+            (click)="bookingService.toggleService(service)"
+          >
+            <img [src]="service.imageUrl" [alt]="service.name" loading="lazy" />
+            <mat-checkbox [checked]="bookingService.isSelected(service.id)" tabindex="-1" />
+            <span>
+              <strong>{{ service.name }}</strong>
+            </span>
+            <b>{{ service.price | currency: 'BRL' : 'symbol' : '1.2-2' : 'pt-BR' }}</b>
+          </button>
+        }
+      </div>
+    </mat-card>
+
+    <mat-card class="booking-card schedule-card">
+      <h2>3. Data e horário</h2>
+      <div class="schedule-grid">
+        <div class="date-panel">
+          <div class="schedule-label">
+            <mat-icon>calendar_month</mat-icon>
+            <span>Escolha uma data</span>
+          </div>
+          <mat-form-field appearance="outline">
+            <mat-label>Data</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              [matDatepickerFilter]="dateFilter"
+              [ngModel]="bookingService.draft().date"
+              (ngModelChange)="bookingService.patchDraft({ date: $event })"
+              readonly
+            />
+            <mat-datepicker-toggle matIconSuffix [for]="picker" />
+            <mat-datepicker #picker />
+          </mat-form-field>
+        </div>
+
+        <div class="time-panel">
+          <div class="schedule-label">
+            <mat-icon>schedule</mat-icon>
+            <span>Horários disponiveis</span>
+          </div>
+          <mat-radio-group
+            class="time-grid"
+            aria-label="Horários disponiveis"
+            [ngModel]="bookingService.draft().time"
+            (ngModelChange)="bookingService.patchDraft({ time: $event })"
+          >
+            @for (time of bookingService.availableTimes; track time) {
+              <mat-radio-button [value]="time">{{ time }}</mat-radio-button>
+            }
+          </mat-radio-group>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+
+  <aside class="summary-panel">
+    <div class="summary-header">
+      <span class="eyebrow">Resumo</span>
+      <strong>{{ bookingService.totalPrice() | currency: 'BRL' : 'symbol' : '1.2-2' : 'pt-BR' }}</strong>
+    </div>
+
+    <div class="summary-content">
+      <div>
+        <span>Serviços</span>
+        <p>
+          @if (bookingService.draft().selectedServices.length) {
+            @for (service of bookingService.draft().selectedServices; track service.id; let last = $last) {
+              {{ service.name }}{{ last ? '' : ', ' }}
+            }
+          } @else {
+            Nenhum servico selecionado
+          }
+        </p>
+      </div>
+      <div>
+        <span>Data</span>
+        <p>{{ bookingService.draft().date ? (bookingService.draft().date | date: 'dd/MM/yyyy') : 'A escolher' }}</p>
+      </div>
+      <div>
+        <span>Horário</span>
+        <p>{{ bookingService.draft().time || 'A escolher' }}</p>
+      </div>
+    </div>
+
+    <button
+      mat-flat-button
+      type="button"
+      [disabled]="!bookingService.canConfirm()"
+      (click)="schedule()"
+    >
+      <mat-icon>check_circle</mat-icon>
+      Agendar
+    </button>
+  </aside>
+</section>

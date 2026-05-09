@@ -1,0 +1,240 @@
+.hero {
+  display: grid;
+  padding-top: 24px;
+}
+
+.hero-actions {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.hero-actions a {
+  min-height: 48px;
+}
+
+.business-info {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+  max-width: 680px;
+}
+
+.business-info div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: var(--radius-control);
+  background: rgba(27, 27, 27, 0.78);
+  box-shadow: var(--shadow-gold);
+  color: var(--color-gray);
+  padding: 10px 14px;
+  backdrop-filter: blur(14px);
+}
+
+.business-info mat-icon {
+  flex: 0 0 auto;
+  color: var(--color-gold-dark);
+}
+
+.services-section {
+  padding-top: 8px;
+}
+
+.section-heading {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.section-heading h2 {
+  margin: 6px 0 0;
+  font-size: clamp(1.55rem, 7vw, 2.5rem);
+  line-height: 1.08;
+}
+
+.section-heading a {
+  min-height: 48px;
+}
+
+.services-carousel {
+  position: relative;
+  display: grid;
+  align-items: center;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel-viewport {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 4px 2px 14px;
+}
+
+.carousel-track {
+  display: grid;
+  grid-auto-columns: 100%;
+  grid-auto-flow: column;
+  gap: 14px;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+  scroll-behavior: smooth;
+  scroll-padding-inline: 2px;
+  scroll-snap-type: inline mandatory;
+  scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.service-slide-card {
+  display: grid;
+  overflow: hidden;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid rgba(32, 33, 36, 0.08);
+  border-color: rgba(212, 175, 55, 0.16);
+  border-radius: var(--radius-card);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015)),
+    var(--color-card);
+  box-shadow: var(--shadow-soft);
+  scroll-snap-align: start;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.service-image {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-height: 160px;
+  background: #e9e7e1;
+}
+
+.service-image img {
+  display: block;
+  width: 100%;
+  height: 160px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform 220ms ease;
+}
+
+.service-content {
+  display: grid;
+  gap: 10px;
+  padding: 16px;
+  background: linear-gradient(180deg, rgba(212, 175, 55, 0.04), transparent);
+}
+
+.service-content h3 {
+  margin: 0;
+  overflow: hidden;
+  font-size: clamp(1.12rem, 5vw, 1.35rem);
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.service-content strong {
+  color: var(--color-gold);
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.carousel-control {
+  position: absolute;
+  z-index: 2;
+  top: 38%;
+  display: inline-grid;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(212, 175, 55, 0.24);
+  background: rgba(27, 27, 27, 0.88);
+  color: var(--color-gold);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.36);
+  backdrop-filter: blur(12px);
+  transform: translateY(-50%);
+}
+
+.carousel-control.previous {
+  left: 6px;
+}
+
+.carousel-control.next {
+  right: 6px;
+}
+
+@media (hover: hover) {
+  .service-slide-card:hover {
+    border-color: rgba(241, 199, 91, 0.72);
+    box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.16), 0 22px 56px rgba(0, 0, 0, 0.48);
+    transform: translateY(-4px);
+  }
+
+  .service-slide-card:hover .service-image img {
+    transform: scale(1.045);
+  }
+}
+
+@media (min-width: 560px) {
+  .hero-actions,
+  .business-info,
+  .section-heading {
+    align-items: center;
+    grid-template-columns: auto auto;
+    justify-content: start;
+  }
+
+  .section-heading {
+    grid-template-columns: 1fr auto;
+  }
+
+  .carousel-track {
+    grid-auto-columns: calc((100% - 16px) / 2);
+    gap: 16px;
+  }
+}
+
+@media (min-width: 720px) {
+  .service-image {
+    max-height: 190px;
+  }
+
+  .service-image img {
+    height: 190px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    padding-top: 52px;
+  }
+
+  .carousel-track {
+    grid-auto-columns: calc((100% - 32px) / 3);
+  }
+
+  .service-image {
+    max-height: 220px;
+  }
+
+  .service-image img {
+    height: 220px;
+  }
+
+  .carousel-control {
+    top: 50%;
+  }
+}

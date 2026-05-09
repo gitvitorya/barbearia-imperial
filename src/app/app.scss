@@ -1,0 +1,6 @@
+.app-shell {
+  min-height: calc(100dvh - 72px);
+  background:
+    linear-gradient(180deg, rgba(212, 175, 55, 0.08), transparent 340px),
+    var(--color-paper);
+}

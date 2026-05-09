@@ -1,0 +1,29 @@
+.summary-list {
+  display: grid;
+  gap: 14px;
+  min-width: min(420px, 72vw);
+  color: var(--color-white);
+}
+
+.summary-list div {
+  display: grid;
+  gap: 4px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.16);
+  padding-bottom: 12px;
+}
+
+.summary-list span {
+  color: var(--color-gray);
+  font-size: 0.82rem;
+}
+
+.summary-list strong {
+  color: var(--color-white);
+  line-height: 1.45;
+}
+
+a[mat-flat-button] {
+  --mdc-filled-button-container-color: var(--color-gold);
+  --mdc-filled-button-label-text-color: #111111;
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.22);
+}

@@ -1,0 +1,257 @@
+@use '@angular/material' as mat;
+
+html {
+  color-scheme: dark;
+  @include mat.theme((color: mat.$azure-palette,
+      typography: Roboto,
+      density: 0));
+}
+
+:root {
+  --color-white: #ffffff;
+  --color-paper: #111111;
+  --color-charcoal: #ffffff;
+  --color-gray: #b3b3b3;
+  --color-line: rgba(212, 175, 55, 0.18);
+  --color-card: #1b1b1b;
+  --color-card-elevated: #222222;
+  --color-gold: #d4af37;
+  --color-gold-hover: #f1c75b;
+  --color-gold-dark: #b99225;
+  --shadow-soft: 0 20px 70px rgba(0, 0, 0, 0.42);
+  --shadow-gold: 0 0 0 1px rgba(212, 175, 55, 0.18), 0 18px 48px rgba(0, 0, 0, 0.38);
+  --radius-card: 22px;
+  --radius-control: 16px;
+  --space-page-x: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  background:
+    radial-gradient(circle at 20% -10%, rgba(212, 175, 55, 0.18), transparent 330px),
+    radial-gradient(circle at 100% 10%, rgba(241, 199, 91, 0.08), transparent 320px),
+    var(--color-paper);
+  color: var(--color-charcoal);
+  font-family: Roboto, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #101010;
+}
+
+body::-webkit-scrollbar-thumb {
+  border: 2px solid #101010;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--color-gold), var(--color-gold-dark));
+}
+
+a {
+  color: inherit;
+}
+
+mat-icon {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+}
+
+.page-container {
+  width: min(1120px, calc(100% - var(--space-page-x)));
+  margin: 0 auto;
+  padding: 24px 0 36px;
+}
+
+.eyebrow {
+  color: var(--color-gold);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.page-title {
+  margin: 8px 0 12px;
+  color: var(--color-charcoal);
+  font-size: clamp(2.05rem, 10vw, 4.8rem);
+  line-height: 1;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.page-lead {
+  max-width: 720px;
+  margin: 0;
+  color: var(--color-gray);
+  font-size: clamp(0.98rem, 3.8vw, 1.08rem);
+  line-height: 1.65;
+}
+
+.mat-mdc-button,
+.mat-mdc-outlined-button,
+.mat-mdc-raised-button,
+.mat-mdc-unelevated-button {
+  min-height: 44px;
+  border-radius: 999px;
+  font-weight: 800;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.mat-mdc-raised-button,
+.mat-mdc-unelevated-button,
+.mat-mdc-fab,
+.mat-mdc-mini-fab {
+  background: linear-gradient(135deg,
+      var(--color-gold),
+      var(--color-gold-dark)) !important;
+
+  color: #111111 !important;
+
+  border: 1px solid rgba(255, 215, 120, 0.18);
+
+  box-shadow:
+    0 10px 30px rgba(212, 175, 55, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  transition: all 180ms ease;
+}
+
+.mat-mdc-raised-button:hover,
+.mat-mdc-unelevated-button:hover,
+.mat-mdc-fab:hover,
+.mat-mdc-mini-fab:hover {
+  background: linear-gradient(135deg,
+      var(--color-gold-hover),
+      var(--color-gold)) !important;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 16px 36px rgba(212, 175, 55, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.mat-mdc-unelevated-button:not(:disabled):hover,
+.mat-mdc-raised-button:not(:disabled):hover,
+.mat-mdc-button:not(:disabled):hover,
+.mat-mdc-outlined-button:not(:disabled):hover {
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.22);
+  transform: translateY(-1px);
+}
+
+.mat-mdc-outlined-button.gold-outline {
+  --mdc-outlined-button-outline-color: var(--color-gold);
+  --mdc-outlined-button-label-text-color: var(--color-gold);
+}
+
+.mat-mdc-icon-button {
+  --mdc-icon-button-icon-color: var(--color-gold);
+  --mat-icon-button-state-layer-color: var(--color-gold);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.mat-mdc-icon-button:not(:disabled):hover {
+  background: rgba(212, 175, 55, 0.16);
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.14);
+}
+
+.mat-mdc-card {
+  --mdc-elevated-card-container-color: var(--color-card);
+  color: var(--color-charcoal);
+}
+
+.mat-mdc-form-field {
+  --mdc-outlined-text-field-container-color: rgba(255, 255, 255, 0.04);
+  --mdc-outlined-text-field-input-text-color: var(--color-white);
+  --mdc-outlined-text-field-label-text-color: var(--color-gray);
+  --mdc-outlined-text-field-outline-color: rgba(212, 175, 55, 0.22);
+  --mdc-outlined-text-field-hover-outline-color: rgba(241, 199, 91, 0.78);
+  --mdc-outlined-text-field-focus-outline-color: var(--color-gold);
+  --mat-form-field-trailing-icon-color: var(--color-gold);
+}
+
+.mat-datepicker-content,
+.mat-mdc-dialog-surface {
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: var(--radius-card);
+  background: rgba(27, 27, 27, 0.96);
+  color: var(--color-white);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(18px);
+}
+
+.mat-calendar-body-selected {
+  background-color: var(--color-gold);
+  color: #111111;
+}
+
+.mat-calendar-body-cell-content,
+.mat-calendar-table-header,
+.mat-calendar-period-button,
+.mat-calendar-arrow,
+.mat-datepicker-toggle {
+  color: var(--color-white);
+}
+
+.mat-mdc-dialog-title {
+  color: var(--color-white);
+  font-weight: 800;
+}
+
+.mat-mdc-dialog-actions .mat-mdc-button {
+  --mdc-text-button-label-text-color: var(--color-gold);
+}
+
+.mat-mdc-radio-button {
+  --mdc-radio-selected-focus-icon-color: var(--color-gold);
+  --mdc-radio-selected-hover-icon-color: var(--color-gold-hover);
+  --mdc-radio-selected-icon-color: var(--color-gold);
+  --mdc-radio-selected-pressed-icon-color: var(--color-gold);
+  --mdc-radio-unselected-icon-color: rgba(255, 255, 255, 0.5);
+  --mat-radio-ripple-color: var(--color-gold);
+}
+
+.mat-mdc-checkbox {
+  --mdc-checkbox-selected-checkmark-color: #111111;
+  --mdc-checkbox-selected-focus-icon-color: var(--color-gold);
+  --mdc-checkbox-selected-hover-icon-color: var(--color-gold-hover);
+  --mdc-checkbox-selected-icon-color: var(--color-gold);
+  --mdc-checkbox-selected-pressed-icon-color: var(--color-gold);
+  --mdc-checkbox-unselected-icon-color: rgba(255, 255, 255, 0.52);
+}
+
+@media (max-width: 720px) {
+  :root {
+    --space-page-x: 24px;
+  }
+
+  .page-container {
+    padding-top: 20px;
+  }
+}
+
+@media (min-width: 721px) {
+  :root {
+    --space-page-x: 32px;
+  }
+}

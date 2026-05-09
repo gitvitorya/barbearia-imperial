@@ -1,0 +1,71 @@
+<section class="page-container hero">
+  <div>
+    <h1 class="page-title">Barbearia Imperial</h1>
+    <p class="page-lead">
+      Cortes, barba e bigode com atendimento por horario marcado.
+    </p>
+    <div class="business-info" aria-label="Informacoes da barbearia">
+      <div>
+        <mat-icon>location_on</mat-icon>
+        <span>Av 7, número 244, Jardim das Palmeiras</span>
+      </div>
+      <div>
+        <mat-icon>schedule</mat-icon>
+        <span>Segunda a sábado, das 8:00 às 19:00</span>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a mat-flat-button routerLink="/agendamento">
+        <mat-icon>event_available</mat-icon>
+        Agendar agora
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="page-container services-section" id="servicos">
+  <div class="section-heading">
+    <div>
+      <span class="eyebrow">Servicos</span>
+    </div>
+  </div>
+
+  <div class="services-carousel" aria-label="Carrossel de servicos da barbearia">
+    <button
+      mat-icon-button
+      class="carousel-control previous"
+      type="button"
+      aria-label="Servico anterior"
+      (click)="scrollCarousel(-1)"
+    >
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+
+    <div class="carousel-viewport">
+      <div class="carousel-track" #carouselTrack>
+        @for (service of bookingService.services; track service.id) {
+          <mat-card class="service-slide-card">
+            <div class="service-image">
+              <img [src]="service.imageUrl" [alt]="service.name" loading="lazy" />
+            </div>
+
+            <mat-card-content class="service-content">
+              <h3>{{ service.name }}</h3>
+              <strong>{{ service.price | currency: 'BRL' : 'symbol' : '1.2-2' : 'pt-BR' }}</strong>
+            </mat-card-content>
+          </mat-card>
+        }
+      </div>
+    </div>
+
+    <button
+      mat-icon-button
+      class="carousel-control next"
+      type="button"
+      aria-label="Proximo servico"
+      (click)="scrollCarousel(1)"
+    >
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+</section>

@@ -1,0 +1,261 @@
+.booking-layout {
+  display: grid;
+  gap: 18px;
+  align-items: start;
+}
+
+.booking-card {
+  margin-top: 16px;
+  border: 1px solid rgba(212, 175, 55, 0.16);
+  border-radius: var(--radius-card);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012)),
+    var(--color-card);
+  box-shadow: var(--shadow-soft);
+  padding: 16px;
+}
+
+.booking-card h2 {
+  margin: 0 0 14px;
+  font-size: clamp(1.08rem, 4.8vw, 1.35rem);
+  line-height: 1.2;
+}
+
+.service-options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.service-option {
+  display: grid;
+  grid-template-columns: 72px auto minmax(0, 1fr);
+  grid-template-areas:
+    "image check text"
+    "image price price";
+  gap: 8px 10px;
+  align-items: center;
+  min-height: 104px;
+  border: 1px solid rgba(212, 175, 55, 0.14);
+  border-radius: var(--radius-control);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--color-charcoal);
+  cursor: pointer;
+  padding: 10px;
+  text-align: left;
+  transition: 180ms ease;
+}
+
+.service-option img {
+  grid-area: image;
+  width: 72px;
+  height: 82px;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+}
+
+.service-option mat-checkbox {
+  grid-area: check;
+}
+
+.service-option span {
+  display: flex;
+  align-items: center;
+  grid-area: text;
+  min-width: 0;
+}
+
+.service-option strong {
+  overflow-wrap: anywhere;
+}
+
+.service-option b {
+  grid-area: price;
+  color: var(--color-gold);
+  font-size: 1.05rem;
+}
+
+.service-option.selected {
+  border-color: var(--color-gold);
+  background: rgba(212, 175, 55, 0.11);
+  box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.18), 0 14px 34px rgba(212, 175, 55, 0.12);
+}
+
+.summary-content span {
+  color: var(--color-gray);
+}
+
+.schedule-grid,
+.customer-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.schedule-card {
+  background:
+    linear-gradient(135deg, rgba(212, 175, 55, 0.14), rgba(255, 255, 255, 0) 46%),
+    var(--color-card);
+}
+
+.date-panel,
+.time-panel {
+  min-width: 0;
+  border: 1px solid rgba(212, 175, 55, 0.16);
+  border-radius: var(--radius-card);
+  background: rgba(17, 17, 17, 0.36);
+  padding: 14px;
+}
+
+.schedule-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  color: var(--color-charcoal);
+  font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.schedule-label mat-icon {
+  color: var(--color-gold-dark);
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.time-grid mat-radio-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  border: 1px solid rgba(212, 175, 55, 0.16);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-charcoal);
+  font-weight: 800;
+  padding: 8px 12px;
+  transition: 180ms ease;
+}
+
+.time-grid mat-radio-button.mat-mdc-radio-checked {
+  border-color: var(--color-gold);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.24), rgba(212, 175, 55, 0.08));
+  color: var(--color-gold-hover);
+  box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.22), 0 12px 28px rgba(212, 175, 55, 0.14);
+}
+
+.summary-panel {
+  display: grid;
+  gap: 16px;
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-top: 4px solid var(--color-gold);
+  border-radius: var(--radius-card);
+  background:
+    linear-gradient(180deg, rgba(212, 175, 55, 0.08), transparent 42%),
+    var(--color-card);
+  box-shadow: var(--shadow-soft);
+  padding: 18px;
+}
+
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.summary-header strong {
+  color: var(--color-gold);
+  font-size: clamp(1.28rem, 6vw, 1.7rem);
+}
+
+.summary-content {
+  display: grid;
+  gap: 12px;
+}
+
+.summary-content div {
+  border-bottom: 1px solid rgba(212, 175, 55, 0.14);
+  padding-bottom: 12px;
+}
+
+.summary-content p {
+  margin: 4px 0 0;
+  line-height: 1.45;
+}
+
+.summary-panel button {
+  min-height: 52px;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+@media (hover: hover) {
+  .service-option:hover {
+    border-color: rgba(241, 199, 91, 0.7);
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.34);
+    transform: translateY(-2px);
+  }
+
+  .time-grid mat-radio-button:hover {
+    border-color: rgba(241, 199, 91, 0.72);
+    background: rgba(212, 175, 55, 0.1);
+    transform: translateY(-1px);
+  }
+}
+
+@media (min-width: 560px) {
+  .booking-card {
+    padding: 20px;
+  }
+
+  .service-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .service-option {
+    grid-template-columns: 82px minmax(0, 1fr) auto;
+    grid-template-areas:
+      "image text check"
+      "image price price";
+    min-height: 112px;
+  }
+
+  .service-option img {
+    width: 82px;
+    height: 92px;
+  }
+
+  .time-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 860px) {
+  .booking-layout {
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 24px;
+  }
+
+  .schedule-grid {
+    grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.2fr);
+    align-items: start;
+  }
+
+  .time-grid {
+    grid-template-columns: repeat(4, minmax(76px, 1fr));
+  }
+
+  .summary-panel {
+    position: sticky;
+    top: 96px;
+  }
+}
+
+@media (min-width: 1120px) {
+  .booking-layout {
+    grid-template-columns: minmax(0, 1fr) 360px;
+  }
+}
