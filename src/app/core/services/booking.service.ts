@@ -20,7 +20,7 @@ export class BookingService {
       id: 'corte-giletado',
       name: 'Corte giletado',
       durationMinutes: 40,
-      price: 55,
+      price: 40,
       imageUrl: 'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=900&q=80',
       featured: true
     },
